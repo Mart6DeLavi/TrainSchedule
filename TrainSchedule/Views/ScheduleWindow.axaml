@@ -1,0 +1,11 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="TrainSchedule.Views.ScheduleWindow"
+        Title="Train Schedule"
+        Width="600" Height="400">
+    
+    <TextBlock Text="Welcome to uor train schedule system"
+               HorizontalAlignment="Center"
+               VerticalAlignment="Center"
+               FontSize="20"/>
+</Window>

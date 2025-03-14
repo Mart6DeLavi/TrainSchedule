@@ -1,0 +1,68 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:global="clr-namespace:"
+        x:Class="TrainSchedule.Views.LoginWindow"
+        x:DataType="global:LoginViewModel"
+        Title="Enter your account"
+        Width="1500" Height="800">
+        
+    <Design.DataContext>
+        <global:LoginViewModel/>
+    </Design.DataContext>
+        
+    <StackPanel>
+        <Border Margin="5" CornerRadius="10" Background="#4F07D9" BorderThickness="10">
+            <TextBlock Margin="3"
+                       FontSize="24"
+                       HorizontalAlignment="Center"
+                       Text="Login Page"
+                       FontStyle="Italic"
+                       Foreground="White">
+            </TextBlock>
+        </Border>
+                
+        <StackPanel Margin="20">
+            <TextBlock VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
+                Margin="0 5" >Name:</TextBlock>
+            
+            <TextBox  Width="300"
+                      VerticalAlignment="Center"
+                      HorizontalAlignment="Center"
+                      Watermark="Enter your username"/>
+            
+            <TextBlock VerticalAlignment="Center" 
+                       HorizontalAlignment="Center" 
+                       Margin="0 5" >Password:</TextBlock>
+            
+            <TextBox PasswordChar="*"
+                     Width="300"
+                     VerticalAlignment="Center"
+                     HorizontalAlignment="Center"
+                     Watermark="Enter your password"/>
+            
+            <Button VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    Margin="30"
+                    Width="100"
+                    Height="40"
+                    Background="#0746D9">
+                <TextBlock VerticalAlignment="Center"
+                           HorizontalAlignment="Center"
+                           Foreground="White"
+                           FontSize="20">Enter
+                </TextBlock>
+            </Button>
+            
+            <Button VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    Margin="5"
+                    Width="166"
+                    Height="30"
+                    Background="#9A8E"
+                    Click="OpenScheduleWindow">
+                <TextBlock FontSize="15">Don't have a account?</TextBlock>
+            </Button>
+        </StackPanel>
+    </StackPanel>
+</Window>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AvaloniaProject">
+    <option name="projectPerEditor">
+      <map>
+        <entry key="TrainSchedule/App.axaml" value="TrainSchedule/TrainSchedule.csproj" />
+        <entry key="TrainSchedule/LoginViewModel.axaml" value="TrainSchedule/TrainSchedule.csproj" />
+        <entry key="TrainSchedule/LoginWindow.axaml" value="TrainSchedule/TrainSchedule.csproj" />
+        <entry key="TrainSchedule/MainWindow.axaml" value="TrainSchedule/TrainSchedule.csproj" />
+        <entry key="TrainSchedule/Views/LoginWindow.axaml" value="TrainSchedule/TrainSchedule.csproj" />
+        <entry key="TrainSchedule/Views/RegistrationWindow.axaml" value="TrainSchedule/TrainSchedule.csproj" />
+        <entry key="TrainSchedule/Views/ScheduleWindow.axaml" value="TrainSchedule/TrainSchedule.csproj" />
+      </map>
+    </option>
+  </component>
+</project>

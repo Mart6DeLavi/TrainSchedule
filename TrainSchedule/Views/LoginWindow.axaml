@@ -22,26 +22,23 @@
         </Border>
                 
         <StackPanel Margin="20">
-            <TextBlock VerticalAlignment="Center"
-                       HorizontalAlignment="Center"
-                Margin="0 5" >Name:</TextBlock>
             
             <TextBox  Width="300"
                       VerticalAlignment="Center"
                       HorizontalAlignment="Center"
-                      Watermark="Enter your username"/>
+                      Watermark="Enter your username"
+                      Text="{Binding Username}"/>
             
-            <TextBlock VerticalAlignment="Center" 
-                       HorizontalAlignment="Center" 
-                       Margin="0 5" >Password:</TextBlock>
-            
-            <TextBox PasswordChar="*"
+            <TextBox Margin="20"
+                     PasswordChar="*"
                      Width="300"
                      VerticalAlignment="Center"
                      HorizontalAlignment="Center"
-                     Watermark="Enter your password"/>
+                     Watermark="Enter your password"
+                     Text="{Binding Password}"/>
             
-            <Button VerticalAlignment="Center"
+            <Button Click="OnLoginClick"
+                VerticalAlignment="Center"
                     HorizontalAlignment="Center"
                     Margin="30"
                     Width="100"

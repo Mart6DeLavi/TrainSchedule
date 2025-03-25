@@ -42,6 +42,10 @@ public class User
     [RegularExpression(@"^\+?[0-9]{10,15}$", ErrorMessage = "Invalid phone number format.")]
     [Column("phone_number")]
     public string PhoneNumber { get; set; } = "";
+    
+    [Required]
+    [Column("role")]
+    public string Role { get; set; } = "USER";
 
     public static bool ValidateUser(User user, out List<string> errors)
     {

@@ -27,8 +27,10 @@ public partial class RegistrationWindow : Window
                 Username = vm.Username,
                 Email = vm.Email,
                 Password = BCrypt.Net.BCrypt.HashPassword(vm.Password),
-                PhoneNumber = vm.PhoneNumber
+                PhoneNumber = vm.PhoneNumber,
+                Role = "USER"
             };
+
 
             using var db = new DatabaseContext();
             db.Users.Add(newUser);

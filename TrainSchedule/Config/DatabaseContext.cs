@@ -9,6 +9,6 @@ public class DatabaseContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=Train_Schedule_UsersUsername=postgres;Password=123456");
+        optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=Train_Schedule_Users;Username=postgres;Password=28859013");
     }
 }

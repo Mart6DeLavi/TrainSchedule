@@ -15,8 +15,9 @@ namespace TrainSchedule.Views
         private void OpenScheduleWindow(object? sender, RoutedEventArgs e)
         {
             
-            var scheduleWindow = new RegistrationWindow();
-            scheduleWindow.Show();
+            var registrationWindow = new RegistrationWindow();
+            registrationWindow.Show();
+            this.Close();
         }
     }
 }

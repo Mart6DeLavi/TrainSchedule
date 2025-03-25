@@ -16,7 +16,7 @@ public class RegistrationViewModel : ReactiveObject
     private string _password = "";
     private string _phoneNumber = "";
     private bool _isPasswordVisible;
-    private char _passwordChar = '●'; // Символ для скрытия пароля
+    private char _passwordChar = '●';
 
     public string Name
     {
@@ -53,8 +53,7 @@ public class RegistrationViewModel : ReactiveObject
         get => _phoneNumber;
         set => this.RaiseAndSetIfChanged(ref _phoneNumber, value);
     }
-
-    // Свойство для управления видимостью пароля
+    
     public bool IsPasswordVisible
     {
         get => _isPasswordVisible;
@@ -65,40 +64,16 @@ public class RegistrationViewModel : ReactiveObject
         }
     }
 
-    public char PasswordChar => IsPasswordVisible ? '\0' : '●'; // '\0' — показать пароль, '●' — скрыть
+    public char PasswordChar => IsPasswordVisible ? '\0' : '●';
 
+    // Оставим только одну команду для переключения видимости пароля
     public ReactiveCommand<Unit, Unit> TogglePasswordVisibilityCommand { get; }
-
-    public ReactiveCommand<Unit, Unit> RegisterCommand { get; }
 
     public RegistrationViewModel()
     {
-        RegisterCommand = ReactiveCommand.Create(ExecuteRegister);
-
-        // Команда для переключения видимости пароля
         TogglePasswordVisibilityCommand = ReactiveCommand.Create(() =>
         {
             IsPasswordVisible = !IsPasswordVisible;
         });
-    }
-
-    private void ExecuteRegister()
-    {
-        using (var db = new DatabaseContext())
-        {
-            var newUser = new User
-            {
-                Name = this.Name,
-                SecondName = this.SecondName,
-                Username = this.Username,
-                Email = this.Email,
-                Password = this.Password,  // В реальном проекте используй хеширование паролей!
-                PhoneNumber = this.PhoneNumber
-            };
-
-            db.Users.Add(newUser);
-            db.SaveChanges();
-            Console.WriteLine("User successfully registered!");
-        }
     }
 }

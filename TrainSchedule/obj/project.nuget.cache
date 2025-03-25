@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "f29FPwlw4X0=",
+  "dgSpecHash": "4hSKZEjJGQc=",
   "success": true,
   "projectFilePath": "/Users/martix_de_lavi/University/FourthSemester/Programing/TrainSchedule/TrainSchedule/TrainSchedule.csproj",
   "expectedPackageFiles": [
@@ -21,6 +21,7 @@
     "/Users/martix_de_lavi/.nuget/packages/avalonia.themes.simple/11.2.1/avalonia.themes.simple.11.2.1.nupkg.sha512",
     "/Users/martix_de_lavi/.nuget/packages/avalonia.win32/11.2.1/avalonia.win32.11.2.1.nupkg.sha512",
     "/Users/martix_de_lavi/.nuget/packages/avalonia.x11/11.2.1/avalonia.x11.11.2.1.nupkg.sha512",
+    "/Users/martix_de_lavi/.nuget/packages/bcrypt.net/0.1.0/bcrypt.net.0.1.0.nupkg.sha512",
     "/Users/martix_de_lavi/.nuget/packages/dynamicdata/9.0.4/dynamicdata.9.0.4.nupkg.sha512",
     "/Users/martix_de_lavi/.nuget/packages/harfbuzzsharp/7.3.0.2/harfbuzzsharp.7.3.0.2.nupkg.sha512",
     "/Users/martix_de_lavi/.nuget/packages/harfbuzzsharp.nativeassets.linux/7.3.0.2/harfbuzzsharp.nativeassets.linux.7.3.0.2.nupkg.sha512",
@@ -140,5 +141,16 @@
     "/Users/martix_de_lavi/.nuget/packages/system.threading.tasks/4.0.11/system.threading.tasks.4.0.11.nupkg.sha512",
     "/Users/martix_de_lavi/.nuget/packages/tmds.dbus.protocol/0.20.0/tmds.dbus.protocol.0.20.0.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'BCrypt.Net 0.1.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net8.0'. This package may not be fully compatible with your project.",
+      "libraryId": "BCrypt.Net",
+      "targetGraphs": [
+        "net8.0"
+      ]
+    }
+  ]
 }

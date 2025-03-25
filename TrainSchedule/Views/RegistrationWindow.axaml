@@ -30,20 +30,20 @@
                                  Text="{Binding Username}"/>
                         <TextBox Margin="10" Width="300" Watermark="Enter email"
                                  Text="{Binding Email}"/>
-                        
-                        
-                        
-                        
-                        <StackPanel Orientation="Horizontal" Margin="10" HorizontalAlignment="Center">
-                            <TextBox Width="260" Watermark="Enter password"
-                                     Text="{Binding Password}" 
-                                     PasswordChar="{Binding PasswordChar}" />
-                            <ToggleButton Width="40" Content="👁" Command="{Binding TogglePasswordVisibilityCommand}" />
-                        </StackPanel>
-
-                        
+                        <TextBox Margin="10" Width="300" PasswordChar="*" Watermark="Enter password"
+                                 Text="{Binding Password}"/>
                         <TextBox Margin="10" Width="300" Watermark="Enter phone number"
                                  Text="{Binding PhoneNumber}"/>
+                        
+                        <Button Click="OnRegisterClick"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Center"
+                                Margin="5"
+                                Width="166"
+                                Height="30"
+                                Background="#315AE0">
+                            <TextBlock FontSize="15">Registration</TextBlock>
+                        </Button>
                 </StackPanel>
         </StackPanel>
 </Window>

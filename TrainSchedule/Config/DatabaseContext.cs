@@ -6,6 +6,7 @@ namespace TrainSchedule.Config;
 public class DatabaseContext : DbContext
 {
     public DbSet<User> Users { get; set; }
+    public DbSet<TrainRoute> TrainRoutes { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {

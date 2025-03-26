@@ -1,11 +1,161 @@
 <Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:viewModels="clr-namespace:TrainSchedule.ViewModels"
         x:Class="TrainSchedule.Views.ScheduleWindow"
+        x:DataType="viewModels:TrainRouteViewModel"
         Title="Train Schedule"
-        Width="600" Height="400">
-    
-    <TextBlock Text="Welcome to uor train schedule system"
-               HorizontalAlignment="Center"
-               VerticalAlignment="Center"
-               FontSize="20"/>
+        Width="1500" Height="800"
+        Background="Black">
+
+    <Grid ColumnDefinitions="1*, 2*, 1*" RowDefinitions="Auto, *" Margin="10">
+
+        <!-- Header -->
+        <Border Grid.ColumnSpan="3" Margin="5" CornerRadius="10" Background="#4F07D9" BorderThickness="2">
+            <TextBlock Margin="10"
+                       FontSize="28"
+                       HorizontalAlignment="Center"
+                       Text="Admin Panel"
+                       FontStyle="Italic"
+                       Foreground="White"/>
+        </Border>
+
+        <!-- Левая панель -->
+        <StackPanel Grid.Row="1" Grid.Column="0" Margin="10" Spacing="10">
+            <Border Background="Black" BorderBrush="#4F07D9" BorderThickness="5" CornerRadius="10" Height="700" Margin="10">
+                <StackPanel>
+                    <Calendar x:Name="Calendar"
+                              SelectedDate="{Binding DepartureDate}"
+                              SelectionMode="SingleDate"
+                              Width="300" Height="300"
+                              VerticalAlignment="Center"
+                              Margin="11 10 0 0"/>
+                    
+                    <TextBox Margin="0 40 0 0"
+                             CornerRadius="10"
+                             Watermark="Departure from"
+                             Foreground="White"
+                             FontSize="20"
+                             TextAlignment="Center"
+                             Background="Black"
+                             BorderBrush="#A014DE"
+                             BorderThickness="5"
+                             HorizontalAlignment="Center"
+                             Width="300"
+                             Text="{Binding From}"/>
+                    
+                    <TextBlock Text="⬇️" Foreground="White" HorizontalAlignment="Center" FontSize="50"/>
+
+                    <TextBox Margin="0 40 0 0"
+                             CornerRadius="10"
+                             Watermark="Arrived to"
+                             Foreground="White"
+                             FontSize="20"
+                             TextAlignment="Center"
+                             Background="Black"
+                             BorderBrush="#A014DE"
+                             BorderThickness="5"
+                             HorizontalAlignment="Center"
+                             Width="300"
+                             Text="{Binding To}"/>
+                </StackPanel>
+            </Border>
+        </StackPanel>
+
+        <!-- Центральная панель -->
+        <Border Grid.Row="1" Grid.Column="1" BorderBrush="#4F07D9" BorderThickness="5" CornerRadius="10" Margin="10" Height="700">
+            <!-- Здесь будет список поездов или таблица в будущем -->
+        </Border>
+
+        <!-- Правая панель -->
+        <Border Grid.Row="1" Grid.Column="2" BorderBrush="#4F07D9" BorderThickness="5" CornerRadius="10" Margin="10" Height="700">
+            <StackPanel Margin="10" Spacing="10">
+                <TextBox CornerRadius="10"
+                         Watermark="Ticket price"
+                         Foreground="White"
+                         FontSize="20"
+                         TextAlignment="Center"
+                         Background="Black"
+                         BorderBrush="#A014DE"
+                         BorderThickness="5"
+                         HorizontalAlignment="Center"
+                         Width="300"
+                         Text="{Binding TicketPrice}"/>
+                
+                <TextBox Margin="0 20 0 0"
+                         CornerRadius="10"
+                         Watermark="Places in train"
+                         Foreground="White"
+                         FontSize="20"
+                         TextAlignment="Center"
+                         Background="Black"
+                         BorderBrush="#A014DE"
+                         BorderThickness="5"
+                         HorizontalAlignment="Center"
+                         Width="300"
+                         Text="{Binding NumberOfSeats}"/>
+                
+                <TextBox Margin="0 20 0 0"
+                         CornerRadius="10"
+                         Watermark="Number of wagons"
+                         Foreground="White"
+                         FontSize="20"
+                         TextAlignment="Center"
+                         Background="Black"
+                         BorderBrush="#A014DE"
+                         BorderThickness="5"
+                         HorizontalAlignment="Center"
+                         Width="300"
+                         Text="{Binding NumberOfWagons}"/>
+
+                <Border Margin="0 30 0 0" BorderThickness="5" BorderBrush="#A014DE" Height="90" CornerRadius="20">
+                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <TextBlock Text="Departure at"
+                                   Foreground="Aqua"
+                                   FontSize="20"
+                                   FontWeight="Bold"
+                                   HorizontalAlignment="Center"
+                                   Margin="0 0 0 5"/>
+                        <TimePicker ClockIdentifier="24HourClock"
+                                    MinuteIncrement="5"
+                                    SelectedTime="{Binding DepartureTime}"
+                                    HorizontalAlignment="Center"
+                                    Width="200"/>
+                    </StackPanel>
+                </Border>
+
+                <TextBlock Text="⬇️" Foreground="White" HorizontalAlignment="Center" FontSize="50"/>
+
+                <Border Margin="0 30 0 0" BorderThickness="5" BorderBrush="#A014DE" Height="90" CornerRadius="20">
+                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <TextBlock Text="Arrived at"
+                                   Foreground="Aqua"
+                                   FontSize="20"
+                                   FontWeight="Bold"
+                                   HorizontalAlignment="Center"
+                                   Margin="0 0 0 5"/>
+                        <TimePicker ClockIdentifier="24HourClock"
+                                    MinuteIncrement="5"
+                                    SelectedTime="{Binding ArrivalTime}"
+                                    HorizontalAlignment="Center"
+                                    Width="200"/>
+                    </StackPanel>
+                </Border>
+
+                <Button Margin="0 50 0 0"
+                        BorderBrush="#00FA88"
+                        HorizontalAlignment="Center"
+                        Width="200"
+                        Height="50"
+                        BorderThickness="5"
+                        CornerRadius="10"
+                        Click="OnAcceptClick">
+                    <TextBlock Text="Accept"
+                               Foreground="White"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Center"
+                               FontSize="30"/>
+                </Button>
+            </StackPanel>
+        </Border>
+    </Grid>
 </Window>

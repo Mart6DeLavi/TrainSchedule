@@ -27,17 +27,17 @@ public partial class LoginWindow : Window
         var user = db.Users.FirstOrDefault(u => u.Username == vm.Username);
         if (user == null)
         {
-            Console.WriteLine("❌ Пользователь не найден");
+            Console.WriteLine("❌ User not found");
             return;
         }
 
         if (!BCrypt.Net.BCrypt.Verify(vm.Password, user.Password))
         {
-            Console.WriteLine("❌ Неверный пароль");
+            Console.WriteLine("❌ Incorrect password");
             return;
         }
 
-        Console.WriteLine($"✅ Вход выполнен. Роль пользователя: {user.Role}");
+        Console.WriteLine($"✅ Login completed. User's role: {user.Role}");
 
         var scheduleWindow = new ScheduleWindow();
         scheduleWindow.Show();

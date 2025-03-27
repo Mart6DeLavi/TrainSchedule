@@ -3,8 +3,8 @@
         xmlns:global="clr-namespace:"
         x:Class="TrainSchedule.Views.LoginWindow"
         x:DataType="global:LoginViewModel"
-        Title="Enter your account"
-        Width="1500" Height="800">
+        Title="Log in into your account"
+        Width="500" Height="280">
         
     <Design.DataContext>
         <global:LoginViewModel/>
@@ -40,25 +40,24 @@
             <Button Click="OnLoginClick"
                 VerticalAlignment="Center"
                     HorizontalAlignment="Center"
-                    Margin="30"
-                    Width="100"
-                    Height="40"
+                    Margin="0 -5 0 10"
+                    Width="200"
+                    Height="30"
                     Background="#0746D9">
                 <TextBlock VerticalAlignment="Center"
                            HorizontalAlignment="Center"
                            Foreground="White"
-                           FontSize="20">Enter
+                           FontSize="17">Enter
                 </TextBlock>
             </Button>
             
             <Button VerticalAlignment="Center"
                     HorizontalAlignment="Center"
-                    Margin="5"
-                    Width="166"
+                    Width="200"
                     Height="30"
-                    Background="#9A8E"
+                    Background="#666"
                     Click="OpenScheduleWindow">
-                <TextBlock FontSize="15">Don't have a account?</TextBlock>
+                <TextBlock FontSize="15" VerticalAlignment="Center" HorizontalAlignment="Center">Don't have a account?</TextBlock>
             </Button>
         </StackPanel>
     </StackPanel>

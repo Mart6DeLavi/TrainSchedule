@@ -9,15 +9,43 @@
         Background="Black">
 
     <Grid ColumnDefinitions="1*, 2*, 1*" RowDefinitions="Auto, *" Margin="10">
-
         <!-- Header -->
         <Border Grid.ColumnSpan="3" Margin="5" CornerRadius="10" Background="#4F07D9" BorderThickness="2">
-            <TextBlock Margin="10"
-                       FontSize="28"
-                       HorizontalAlignment="Center"
-                       Text="Admin Panel"
-                       FontStyle="Italic"
-                       Foreground="White"/>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <!-- Заголовок по центру -->
+                <TextBlock Grid.Column="0" Margin="10"
+                           FontSize="28"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           Text="Admin Panel"
+                           FontStyle="Italic"
+                           Foreground="White"/>
+                <Button Grid.Column="1" Margin="10"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Top"
+                        Content="Log out"
+                        Click="OnLogoutClick"
+                        Background="#FF5C5C"
+                        Foreground="White"
+                        FontSize="16"
+                        FontWeight="Bold"
+                        BorderThickness="0"
+                        Padding="10,5">
+                    <Button.Styles>
+                        <Style Selector="Button:pointerover">
+                            <Setter Property="Background" Value="#FF3C3C"/>
+                        </Style>
+                        <Style Selector="Button:pressed">
+                            <Setter Property="Background" Value="#FF1C1C"/>
+                        </Style>
+                    </Button.Styles>
+                </Button>
+
+            </Grid>
         </Border>
 
         <!-- Left panel -->
@@ -31,33 +59,32 @@
                               VerticalAlignment="Center"
                               Margin="11 10 0 0"/>
                     
-                    <TextBox Margin="0 40 0 0"
-                             CornerRadius="10"
-                             Watermark="Departure from"
-                             Foreground="White"
-                             FontSize="20"
-                             TextAlignment="Center"
-                             Background="Black"
-                             BorderBrush="#A014DE"
-                             BorderThickness="5"
-                             HorizontalAlignment="Center"
-                             Width="300"
-                             Text="{Binding From}"/>
-                    
-                    <TextBlock Text="⬇️" Foreground="White" HorizontalAlignment="Center" FontSize="50"/>
+                    <ComboBox Margin="0 40 0 0"
+                              CornerRadius="10"
+                              Foreground="White"
+                              FontSize="20"
+                              Background="Black"
+                              BorderBrush="#A014DE"
+                              BorderThickness="5"
+                              HorizontalAlignment="Center"
+                              Width="300"
+                              ItemsSource="{Binding AvailableCities}"
+                              SelectedItem="{Binding From}"/>
 
-                    <TextBox Margin="0 40 0 0"
-                             CornerRadius="10"
-                             Watermark="Arrived to"
-                             Foreground="White"
-                             FontSize="20"
-                             TextAlignment="Center"
-                             Background="Black"
-                             BorderBrush="#A014DE"
-                             BorderThickness="5"
-                             HorizontalAlignment="Center"
-                             Width="300"
-                             Text="{Binding To}"/>
+                    <TextBlock Text="⬇️" Foreground="White" HorizontalAlignment="Center" FontSize="50"/>
+                    
+                    <ComboBox Margin="0 40 0 0"
+                              CornerRadius="10"
+                              Foreground="White"
+                              FontSize="20"
+                              Background="Black"
+                              BorderBrush="#A014DE"
+                              BorderThickness="5"
+                              HorizontalAlignment="Center"
+                              Width="300"
+                              ItemsSource="{Binding AvailableCities}"
+                              SelectedItem="{Binding To}"/>
+
                 </StackPanel>
             </Border>
         </StackPanel>
@@ -77,12 +104,12 @@
                                 <Grid ColumnDefinitions="1*,1*,1*" RowDefinitions="Auto,Auto">
                                     <!-- FROM -> TO -->
                                     <StackPanel Grid.Column="0" HorizontalAlignment="Center">
-                                        <TextBlock Margin="0 10 0 0 " Text="{Binding From}" 
+                                        <TextBlock Margin="0 10 0 0" Text="{Binding From}" 
                                                    Foreground="White" FontWeight="Bold"
                                                    FontSize="18" HorizontalAlignment="Center"/>
                                         <TextBlock Text="⬇️" FontSize="30"
                                                    HorizontalAlignment="Center"/>
-                                        <TextBlock Margin="0 20 0 0 " Text="{Binding To}"
+                                        <TextBlock Margin="0 20 0 0" Text="{Binding To}"
                                                    Foreground="White" FontWeight="Bold"
                                                    FontSize="18" HorizontalAlignment="Center"/>
                                     </StackPanel>
@@ -92,7 +119,7 @@
                                         <TextBlock Text="Departure time"
                                                    Foreground="White" FontSize="14" HorizontalAlignment="Center"/>
                                         <TextBlock Text="{Binding DepartureTime}" 
-                                                   Foreground="Aqua" FontSize="16" HorizontalAlignment="Center" Margin="0 5 0 0 "/>
+                                                   Foreground="Aqua" FontSize="16" HorizontalAlignment="Center" Margin="0 5 0 0"/>
                                         <TextBlock Margin="0 -5 0 0" Text="⬇️" FontSize="30" HorizontalAlignment="Center"/>
                                         <TextBlock Text="Arrival time"
                                                    Foreground="White" FontSize="14" HorizontalAlignment="Center"/>
@@ -106,12 +133,10 @@
                                             <TextBlock Text="Places" Foreground="White" HorizontalAlignment="Center"/>
                                             <TextBlock Text="{Binding NumberOfSeats}" Foreground="LightGray" HorizontalAlignment="Center"/>
                                         </StackPanel>
-
                                         <StackPanel Margin="0 0 0 10">
                                             <TextBlock Text="Wagons" Foreground="White" HorizontalAlignment="Center"/>
                                             <TextBlock Text="{Binding NumberOfWagons}" Foreground="LightGray" HorizontalAlignment="Center"/>
                                         </StackPanel>
-
                                         <StackPanel>
                                             <TextBlock Text="Price" Foreground="White" HorizontalAlignment="Center"/>
                                             <TextBlock Text="{Binding TicketPrice}" Foreground="LightGray" HorizontalAlignment="Center"/>
@@ -124,7 +149,6 @@
                 </ItemsControl>
             </ScrollViewer>
         </Border>
-
 
         <!-- Right panel -->
         <Border Grid.Row="1" Grid.Column="2" BorderBrush="#4F07D9" BorderThickness="5" CornerRadius="10" Margin="10" Height="700">

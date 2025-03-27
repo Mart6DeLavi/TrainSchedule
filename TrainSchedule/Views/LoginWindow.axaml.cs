@@ -1,11 +1,13 @@
 using System;
-using System.Diagnostics;
 using System.Linq;
+using System.Threading.Tasks;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Interactivity;
+using Avalonia.Media;
 using TrainSchedule.Config;
+using Avalonia.Layout;  // <-- Для HorizontalAlignment, VerticalAlignment
 
 namespace TrainSchedule.Views;
 
@@ -17,7 +19,8 @@ public partial class LoginWindow : Window
         DataContext = new LoginViewModel();
     }
 
-    private void OnLoginClick(object? sender, RoutedEventArgs e)
+    // Обработчик входа сделан асинхронным
+    private async void OnLoginClick(object? sender, RoutedEventArgs e)
     {
         if (DataContext is not LoginViewModel vm)
             return;
@@ -27,13 +30,13 @@ public partial class LoginWindow : Window
         var user = db.Users.FirstOrDefault(u => u.Username == vm.Username);
         if (user == null)
         {
-            Console.WriteLine("❌ User not found");
+            await ShowErrorDialog("User not found");
             return;
         }
 
         if (!BCrypt.Net.BCrypt.Verify(vm.Password, user.Password))
         {
-            Console.WriteLine("❌ Incorrect password");
+            await ShowErrorDialog("Incorrect password");
             return;
         }
 
@@ -51,13 +54,12 @@ public partial class LoginWindow : Window
         }
         else
         {
-            Console.WriteLine("❌ Unknown role.");
+            await ShowErrorDialog("Unknown role.");
             return;
         }
 
         CloseLoginWindow();
     }
-
 
     private void CloseLoginWindow()
     {
@@ -79,5 +81,52 @@ public partial class LoginWindow : Window
         var registrationWindow = new RegistrationWindow();
         registrationWindow.Show();
         this.Close();
+    }
+    
+    private async Task ShowErrorDialog(string message)
+    {
+        var dialog = new Window
+        {
+            Title = "Error",
+            Width = 400,
+            Height = 150,
+            WindowStartupLocation = WindowStartupLocation.CenterOwner
+        };
+
+        var stack = new StackPanel
+        {
+            Spacing = 10,
+            HorizontalAlignment = HorizontalAlignment.Center, 
+            VerticalAlignment = VerticalAlignment.Center,     
+            Margin = new Thickness(20)
+        };
+
+        var textBlock = new TextBlock
+        {
+            Text = message,
+            Foreground = Brushes.Red,
+            TextAlignment = TextAlignment.Center,
+            HorizontalAlignment = HorizontalAlignment.Center
+        };
+
+        var button = new Button
+        {
+            Content = "OK",
+            HorizontalAlignment = HorizontalAlignment.Center,
+            Margin = new Thickness(0, 10, 0, 0),
+            Width = 80,
+            
+            HorizontalContentAlignment = HorizontalAlignment.Center,
+            VerticalContentAlignment = VerticalAlignment.Center
+        };
+
+
+        button.Click += (s, args) => dialog.Close();
+
+        stack.Children.Add(textBlock);
+        stack.Children.Add(button);
+        dialog.Content = stack;
+
+        await dialog.ShowDialog(this);
     }
 }

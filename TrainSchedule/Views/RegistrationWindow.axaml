@@ -1,49 +1,68 @@
 <Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:global="clr-namespace:"
         xmlns:viewModels="clr-namespace:TrainSchedule.ViewModels"
         x:Class="TrainSchedule.Views.RegistrationWindow"
         x:DataType="viewModels:RegistrationViewModel"
-        Title="RegistrationWindow"
-        Width="1500" Height="800">
+        Title="Register new account"
+        Width="500" Height="500">
         
-        <Design.DataContext>
-                <viewModels:RegistrationViewModel/>
-        </Design.DataContext>
+    <Design.DataContext>
+        <viewModels:RegistrationViewModel/>
+    </Design.DataContext>
         
-        <StackPanel>
-                <Border Margin="5" CornerRadius="10" Background="#4F07D9" BorderThickness="10">
-                        <TextBlock Margin="3"
-                                   FontSize="24"
-                                   HorizontalAlignment="Center"
-                                   Text="Registration Page"
-                                   FontStyle="Italic"
-                                   Foreground="White">
-                        </TextBlock>
-                </Border>
-                <StackPanel Margin="20">
-                        <TextBox Margin="10" Width="300" Watermark="Enter name" 
-                                 Text="{Binding Name}"/>
-                        <TextBox Margin="10" Width="300" Watermark="Enter second name"
-                                 Text="{Binding SecondName}"/>
-                        <TextBox Margin="10" Width="300" Watermark="Enter username"
-                                 Text="{Binding Username}"/>
-                        <TextBox Margin="10" Width="300" Watermark="Enter email"
-                                 Text="{Binding Email}"/>
-                        <TextBox Margin="10" Width="300" PasswordChar="*" Watermark="Enter password"
-                                 Text="{Binding Password}"/>
-                        <TextBox Margin="10" Width="300" Watermark="Enter phone number"
-                                 Text="{Binding PhoneNumber}"/>
-                        
-                        <Button Click="OnRegisterClick"
-                                VerticalAlignment="Center"
-                                HorizontalAlignment="Center"
-                                Margin="5"
-                                Width="166"
-                                Height="30"
-                                Background="#315AE0">
-                            <TextBlock FontSize="15">Registration</TextBlock>
-                        </Button>
-                </StackPanel>
+    <StackPanel>
+        <Border Margin="5" CornerRadius="10" Background="#4F07D9" BorderThickness="10">
+            <TextBlock Margin="3"
+                       FontSize="24"
+                       HorizontalAlignment="Center"
+                       Text="Registration Page"
+                       FontStyle="Italic"
+                       Foreground="White"/>
+        </Border>
+
+        <StackPanel Margin="20">
+            <TextBox Margin="10" Width="300" Watermark="Enter name" 
+                     Text="{Binding Name}"/>
+            <TextBox Margin="10" Width="300" Watermark="Enter second name"
+                     Text="{Binding SecondName}"/>
+            <TextBox Margin="10" Width="300" Watermark="Enter username"
+                     Text="{Binding Username}"/>
+            <TextBox Margin="10" Width="300" Watermark="Enter email"
+                     Text="{Binding Email}"/>
+            <TextBox Margin="10" Width="300" PasswordChar="*" Watermark="Enter password"
+                     Text="{Binding Password}"/>
+            <TextBox Margin="10" Width="300" Watermark="Enter phone number"
+                     Text="{Binding PhoneNumber}"/>
+            
+            <!-- Кнопка "Registration" -->
+            <Button Click="OnRegisterClick"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    Margin="5"
+                    Width="166"
+                    Height="30"
+                    Background="#315AE0">
+                <TextBlock FontSize="15"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center">
+                    Registration
+                </TextBlock>
+            </Button>
+            
+            <!-- Кнопка "Back to Log in" -->
+            <Button Click="OnBackToLoginClick"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    Margin="5"
+                    Width="166"
+                    Height="30"
+                    Background="#666">
+                <TextBlock FontSize="15"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center">
+                    Back to Login
+                </TextBlock>
+            </Button>
         </StackPanel>
+    </StackPanel>
 </Window>

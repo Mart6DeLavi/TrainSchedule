@@ -65,6 +65,12 @@ namespace TrainSchedule.Views
 
             Console.WriteLine("✅ The data has been successfully saved to the database.");
         }
-
+        
+        private void OnLogoutClick(object? sender, RoutedEventArgs e)
+        {
+            var loginWindow = new LoginWindow();
+            loginWindow.Show();
+            this.Close();
+        }
     }
 }

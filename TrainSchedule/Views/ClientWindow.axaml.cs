@@ -19,4 +19,11 @@ public partial class ClientWindow : Window
             vm.SearchRoutes();
         }
     }
+    
+    private void OnLogoutClick(object? sender, RoutedEventArgs e)
+    {
+        var loginWindow = new LoginWindow();
+        loginWindow.Show();
+        this.Close();
+    }
 }

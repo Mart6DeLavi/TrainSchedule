@@ -1,9 +1,4 @@
-using System;
-using System.Reactive;
-using Avalonia;
-using Avalonia.Controls.ApplicationLifetimes;
 using ReactiveUI;
-using TrainSchedule.Views;
 
 public class LoginViewModel : ReactiveObject
 {

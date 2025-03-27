@@ -17,52 +17,53 @@ namespace TrainSchedule.Views
         
         private void OnAcceptClick(object? sender, RoutedEventArgs e)
         {
-            if (DataContext is not TrainRouteViewModel vm)
+            if (DataContext is not TrainRouteViewModel viewModel)
                 return;
 
-            // Проверка на пустые значения
-            if (string.IsNullOrWhiteSpace(vm.From) ||
-                string.IsNullOrWhiteSpace(vm.To) ||
-                string.IsNullOrWhiteSpace(vm.NumberOfSeats) ||
-                string.IsNullOrWhiteSpace(vm.NumberOfWagons) ||
-                string.IsNullOrWhiteSpace(vm.TicketPrice))
+            if (string.IsNullOrWhiteSpace(viewModel.From) ||
+                string.IsNullOrWhiteSpace(viewModel.To) ||
+                string.IsNullOrWhiteSpace(viewModel.NumberOfSeats) ||
+                string.IsNullOrWhiteSpace(viewModel.NumberOfWagons) ||
+                string.IsNullOrWhiteSpace(viewModel.TicketPrice))
             {
-                Console.WriteLine("❌ Все поля должны быть заполнены.");
-                return;
-            }
-
-            // Проверка на числовые значения
-            if (!int.TryParse(vm.NumberOfSeats, out int seats) || seats <= 0 ||
-                !int.TryParse(vm.NumberOfWagons, out int wagons) || wagons <= 0 ||
-                !decimal.TryParse(vm.TicketPrice, out decimal price) || price <= 0)
-            {
-                Console.WriteLine("❌ Числовые поля должны быть корректными и положительными.");
+                Console.WriteLine("❌ All fields must be completed");
                 return;
             }
 
-            if (vm.ArrivalTime <= vm.DepartureTime)
+            if (!int.TryParse(viewModel.NumberOfSeats, out int seats) || seats <= 0 ||
+                !int.TryParse(viewModel.NumberOfWagons, out int wagons) || wagons <= 0 ||
+                !decimal.TryParse(viewModel.TicketPrice, out decimal price) || price <= 0)
             {
-                Console.WriteLine("❌ Время прибытия должно быть позже времени отправления.");
+                Console.WriteLine("❌ Numeric fields must be correct and positive.");
                 return;
             }
 
-            var newRoute = new TrainRoute
+            if (viewModel.ArrivalTime <= viewModel.DepartureTime)
             {
-                From = vm.From,
-                To = vm.To,
-                DepartureTime = vm.GetFullDepartureTime(),
-                ArrivalTime = vm.GetFullArrivalTime(),
+                Console.WriteLine("❌ The arrival time must be later than the departure time.");
+                return;
+            }
+
+            TrainRoute route = new()
+            {
+                From = viewModel.From,
+                To = viewModel.To,
+                DepartureTime = viewModel.GetFullDepartureTime().ToUniversalTime(),
+                ArrivalTime = viewModel.GetFullArrivalTime().ToUniversalTime(),
                 NumberOfSeats = seats,
                 NumberOfWagons = wagons,
                 TicketPrice = price
             };
+            
+            using (var db = new DatabaseContext())
+            {
+                db.TrainRoutes.Add(route);
+                db.SaveChanges();
+            }
 
-            using var db = new DatabaseContext();
-            db.TrainRoutes.Add(newRoute);
-            db.SaveChanges();
+            viewModel.Routes.Add(route);
 
-            Console.WriteLine("✅ Данные успешно сохранены в базу.");
+            Console.WriteLine("✅ The data has been successfully saved to the database.");
         }
-
     }
 }

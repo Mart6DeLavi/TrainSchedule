@@ -1,4 +1,6 @@
 using System;
+using System.Collections.ObjectModel;
+using TrainSchedule.Entity;
 
 namespace TrainSchedule.ViewModels;
 
@@ -18,4 +20,5 @@ public class TrainRouteViewModel
     public DateTime GetFullDepartureTime() => DateTime.SpecifyKind(DepartureDate.Date + DepartureTime, DateTimeKind.Utc);
     public DateTime GetFullArrivalTime() => DateTime.SpecifyKind(DepartureDate.Date + ArrivalTime, DateTimeKind.Utc);
 
+    public ObservableCollection<TrainRoute> Routes { get; } = new();
 }

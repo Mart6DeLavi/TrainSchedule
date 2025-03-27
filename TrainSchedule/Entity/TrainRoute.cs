@@ -20,11 +20,11 @@ public class TrainRoute
     public string To { get; set; } = "";
 
     [Required]
-    [Column("departure_time")]
+    [Column("departure_time", TypeName = "timestamp without time zone")]
     public DateTime DepartureTime { get; set; }
 
     [Required]
-    [Column("arrival_time")]
+    [Column("arrival_time", TypeName = "timestamp without time zone")]
     public DateTime ArrivalTime { get; set; }
 
     [Range(1, int.MaxValue)]

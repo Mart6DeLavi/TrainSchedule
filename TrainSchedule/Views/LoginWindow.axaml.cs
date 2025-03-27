@@ -39,10 +39,25 @@ public partial class LoginWindow : Window
 
         Console.WriteLine($"✅ Login completed. User's role: {user.Role}");
 
-        var scheduleWindow = new ScheduleWindow();
-        scheduleWindow.Show();
+        if (user.Role == "ADMIN")
+        {
+            var scheduleWindow = new ScheduleWindow();
+            scheduleWindow.Show();
+        }
+        else if (user.Role == "USER")
+        {
+            var clientWindow = new ClientWindow();
+            clientWindow.Show();
+        }
+        else
+        {
+            Console.WriteLine("❌ Unknown role.");
+            return;
+        }
+
         CloseLoginWindow();
     }
+
 
     private void CloseLoginWindow()
     {

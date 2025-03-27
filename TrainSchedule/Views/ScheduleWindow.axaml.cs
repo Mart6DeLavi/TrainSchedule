@@ -43,18 +43,18 @@ namespace TrainSchedule.Views
                 Console.WriteLine("❌ The arrival time must be later than the departure time.");
                 return;
             }
-
+            
             TrainRoute route = new()
             {
                 From = viewModel.From,
                 To = viewModel.To,
-                DepartureTime = viewModel.GetFullDepartureTime().ToUniversalTime(),
-                ArrivalTime = viewModel.GetFullArrivalTime().ToUniversalTime(),
+                DepartureTime = viewModel.GetFullDepartureTime(),
+                ArrivalTime = viewModel.GetFullArrivalTime(), 
                 NumberOfSeats = seats,
                 NumberOfWagons = wagons,
                 TicketPrice = price
             };
-            
+    
             using (var db = new DatabaseContext())
             {
                 db.TrainRoutes.Add(route);
@@ -65,5 +65,6 @@ namespace TrainSchedule.Views
 
             Console.WriteLine("✅ The data has been successfully saved to the database.");
         }
+
     }
 }

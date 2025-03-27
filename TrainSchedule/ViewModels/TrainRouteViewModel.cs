@@ -16,9 +16,8 @@ public class TrainRouteViewModel
     public string NumberOfSeats { get; set; } = "";
     public string NumberOfWagons { get; set; } = "";
     public string TicketPrice { get; set; } = "";
-    
-    public DateTime GetFullDepartureTime() => DateTime.SpecifyKind(DepartureDate.Date + DepartureTime, DateTimeKind.Utc);
-    public DateTime GetFullArrivalTime() => DateTime.SpecifyKind(DepartureDate.Date + ArrivalTime, DateTimeKind.Utc);
+    public DateTime GetFullDepartureTime() => DepartureDate.Date + DepartureTime;
+    public DateTime GetFullArrivalTime() => DepartureDate.Date + ArrivalTime;
 
     public ObservableCollection<TrainRoute> Routes { get; } = new();
 }

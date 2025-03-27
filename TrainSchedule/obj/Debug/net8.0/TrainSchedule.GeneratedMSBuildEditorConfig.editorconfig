@@ -30,6 +30,9 @@ build_property.EnableGeneratedComInterfaceComImportInterop =
 [/Users/martix_de_lavi/University/FourthSemester/Programing/TrainSchedule/TrainSchedule/App.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
+[/Users/martix_de_lavi/University/FourthSemester/Programing/TrainSchedule/TrainSchedule/Views/ClientWindow.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
 [/Users/martix_de_lavi/University/FourthSemester/Programing/TrainSchedule/TrainSchedule/Views/LoginWindow.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
